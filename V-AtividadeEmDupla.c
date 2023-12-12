@@ -13,21 +13,26 @@ struct produto
 };
 
 int main(){
-    //Declarando Vari·veis
+    //Declarando Vari√°veis
     struct produto entrada[TAM];
     struct produto saida[TAM];
+    struct produto atual[TAM];
     
     int quantidade;
-    int code,i;
+    int code,contador,i;
 
     setlocale(LC_ALL,"portuguese");
+    do
+    {
     printf("Sistema de gerenciamento.\n");
     printf("1- Entrada de produtos. \n");
-    printf("2- SaÌda de produtos. \n");
-    printf("3- Invent·rio. \n");
-    printf("4- Funcion·rios presentes no site. \n");
+    printf("2- Sa√≠da de produtos. \n");
+    printf("3- Invent√°rio. \n");
+    printf("4- Funcion√°rios presentes no site. \n");
     printf("Resposta: ");
     scanf("%i",&code);
+    system("cls || clear");
+    
 
     switch (code)
     {
@@ -37,18 +42,37 @@ int main(){
 
         for ( i = 0; i < quantidade; i++)
         {
-            printf("Digite o %i∫ produto: ",i+1);
-            gets(produto.)
-        }
-        
+            fflush(stdin);
+            printf("Digite o %i¬∫ produto: ",i+1);
+            gets(entrada[i].nome);
+            strcpy(atual[i].nome,entrada[i].nome);
+            contador++;
 
+            printf("Digite o pre√ßo do %i¬∫ produto: ",i+1);
+            scanf("%f",&entrada[i].preco);
+            atual[i].preco = entrada[i].preco;
+
+            printf("Digite a quantidade do %i¬∫ produto: ",i+1);
+            scanf("%i",&entrada[i].estoque);
+            atual[i].estoque = entrada[i].estoque;
+            system("cls || clear");
+        }
+        break;
+
+    case 3:
+        for ( i = 0; i < contador; i++)
+        {
+            printf("Produto: %s\n",atual[i].nome);
+            printf("Pre√ßo: %.2f\n",atual[i].preco);
+            printf("Em estoque: %.i\n\n",atual[i].estoque);
+        }
         
         break;
     
     default:
         break;
     }
-
+    } while (code != 4);
 
     return 0;
 }
